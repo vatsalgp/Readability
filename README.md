@@ -1,5 +1,5 @@
 # Readability
-Tests the level of readability of text
+Tests the level of readability of text files
 
 ## Compile Java Code
     javac src/* -d out
