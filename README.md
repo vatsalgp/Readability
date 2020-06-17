@@ -5,4 +5,9 @@ Tests the level of readability of text
     javac src/* -d out
 
 ## Run Java Code 
+    java -cp out src.Main <filepath>
+
+## Running Code Examples 
+    java -cp out src.Main examples/1-joke.txt
+    java -cp out src.Main examples/2-easy.txt
     java -cp out src.Main examples
