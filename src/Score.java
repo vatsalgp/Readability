@@ -1,33 +1,26 @@
+package src;
+
 import java.util.Scanner;
-import java.io.File;
 
-public class Readability {
-    private static int noOfSentences = 0;
-    private static int noOfWords = 0;
-    private static int noOfCharacters = 0;
-    private static int score = 0;
+class Score {
+    private int noOfSentences = 0;
+    private int noOfWords = 0;
+    private int noOfCharacters = 0;
+    private int score = 0;
+    private String fileName = "";
 
-    public static void main(final String[] args) {
-        if (args.length == 0)
-            System.out.println("ERROR: No File Path added");
-        else {
-            File file = new File(args[0]);
-            workOnFile(file);
-        }
-    }
-
-    private static void workOnFile(final File file) {
+    Score(final java.io.File file) {
         try {
-            final Scanner scanner = new Scanner(file);
-            parseFile(scanner);
+            fileName = file.getName();
+            parseFile(new Scanner(file));
             calcScore();
             printResults();
         } catch (final Exception e) {
-            System.out.println("ERROR: Unable to open file : " + file.getName());
+            System.out.println("ERROR: Unable to open file : " + fileName);
         }
     }
 
-    private static void parseFile(final Scanner scanner) {
+    private void parseFile(final Scanner scanner) {
         while (scanner.hasNext()) {
             final String line = scanner.nextLine().trim();
             final String[] sentences = line.split("[.!?]");
@@ -40,11 +33,13 @@ public class Readability {
         noOfWords -= noOfSentences;
     }
 
-    private static void calcScore() {
+    private void calcScore() {
         score = (int) Math.ceil(4.71 * noOfCharacters / noOfWords + 0.5 * noOfWords / noOfSentences - 21.43);
     }
 
-    private static void printResults() {
+    private void printResults() {
+        System.out.println();
+        System.out.println("File Name: " + fileName);
         System.out.println("Words: " + noOfWords);
         System.out.println("Sentences: " + noOfSentences);
         System.out.println("Characters: " + noOfCharacters);
@@ -56,5 +51,6 @@ public class Readability {
             System.out.println("It can be understood by a College Student");
         else
             System.out.println("It can be understood by a Student of class " + score);
+        System.out.println();
     }
 }
