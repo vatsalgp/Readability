@@ -68,7 +68,8 @@ class Score {
     }
 
     private double calcScoreARI() {
-        return 4.71 * noOfCharacters / noOfWords + 0.5 * noOfWords / noOfSentences - 21.43;
+        int words = noOfWords - noOfSentences;
+        return 4.71 * noOfCharacters / words + 0.5 * words / noOfSentences - 21.43;
     }
 
     private double calcScoreFK() {
@@ -89,7 +90,6 @@ class Score {
         double scoreSMOG = calcScoreSMOG();
         double scoreFK = calcScoreFK();
         int scoreAVG = (int) Math.round((scoreCL + scoreARI + scoreSMOG + scoreFK) / 4);
-        System.out.println();
         System.out.println("File: " + fileName);
         System.out.println("Words: " + noOfWords);
         System.out.println("Sentences: " + noOfSentences);
