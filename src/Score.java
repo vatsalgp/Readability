@@ -24,7 +24,7 @@ class Score {
         while (scanner.hasNext()) {
             final String line = scanner.nextLine().trim();
             final String[] sentences = line.split("[.!?]");
-            final String[] words = String.join("", sentences).split("\\s");
+            final String[] words = String.join("", sentences).split("[\\s]+");
             final String[] characters = String.join("", words).split("");
             noOfCharacters += characters.length;
             noOfWords += words.length;
@@ -41,6 +41,8 @@ class Score {
     private int countSyllables(String phrase) {
         StringBuilder word = new StringBuilder(phrase.toLowerCase());
         int noOfVowels = 0;
+        if (word.length() == 0)
+            return 0;
         while (word.charAt(word.length() - 1) == 'e')
             word.deleteCharAt(word.length() - 1);
         for (int i = 0; i < word.length(); i++)
