@@ -21,9 +21,9 @@ class Score {
     }
 
     private void parseFile(final Scanner scanner) {
-        while (scanner.hasNext()) {
+        while (scanner.hasNextLine()) {
             final String line = scanner.nextLine().trim();
-            final String[] sentences = line.split("[.!?]");
+            final String[] sentences = line.split("[.!?]+");
             final String[] words = String.join("", sentences).split("[\\s]+");
             final String[] characters = String.join("", words).split("");
             noOfCharacters += characters.length;
