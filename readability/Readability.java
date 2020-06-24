@@ -1,8 +1,8 @@
-package src;
+package readability;
 
 import java.util.Scanner;
 
-class Score {
+class Readability {
     private int noOfSentences = 0;
     private int noOfWords = 0;
     private int noOfCharacters = 0;
@@ -10,7 +10,7 @@ class Score {
     private int noOfPolysyllablesWords = 0;
     private String fileName = "";
 
-    Score(final java.io.File file) {
+    Readability(final java.io.File file) {
         try {
             fileName = file.getName();
             parseFile(new Scanner(file));

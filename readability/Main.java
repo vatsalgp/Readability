@@ -1,4 +1,4 @@
-package src;
+package readability;
 
 import java.io.File;
 
@@ -13,7 +13,7 @@ class Main {
 
     private static void readFile(File file) {
         if (file.isFile())
-            new Score(file);
+            new Readability(file);
         else if (file.isDirectory())
             for (File child : file.listFiles())
                 readFile(child);
